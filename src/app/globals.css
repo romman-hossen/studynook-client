@@ -1,2 +1,114 @@
 @import "tailwindcss";
 @import "@heroui/styles";
+
+@theme {
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --color-primary: #0F766E;
+  --color-primary-hover: #115E59;
+  --color-accent: #F59E0B;
+  --color-accent-amber: #F59E0B;
+  --color-status-confirmed: #16A34A;
+  --color-status-cancelled: #DC2626;
+
+  --color-bg-light: #F8FAFC;
+  --color-surface-light: #FFFFFF;
+  --color-text-light: #0F172A;
+  --color-muted-light: #64748B;
+  --color-border-light: #E2E8F0;
+
+  --color-bg-dark: #0B1220;
+  --color-surface-dark: #111A2E;
+  --color-border-dark: #1E293B;
+}
+
+:root {
+  /* StudyNook Light Theme Design Tokens */
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --surface: #FFFFFF;
+  --surface-foreground: #0F172A;
+  --surface-secondary: #F1F5F9;
+  --surface-secondary-foreground: #0F172A;
+  --surface-tertiary: #E2E8F0;
+  --surface-tertiary-foreground: #0F172A;
+  --overlay: #FFFFFF;
+  --overlay-foreground: #0F172A;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --separator: #E2E8F0;
+
+  /* HeroUI Primary / Accent Mapping */
+  --accent: #0F766E;
+  --accent-hover: #115E59;
+  --accent-foreground: #FFFFFF;
+
+  /* Status Colors */
+  --success: #16A34A;
+  --success-foreground: #FFFFFF;
+  --danger: #DC2626;
+  --danger-foreground: #FFFFFF;
+  --warning: #F59E0B;
+  --warning-foreground: #FFFFFF;
+
+  /* Focus & Links */
+  --focus: #0F766E;
+  --link: #0F766E;
+}
+
+.dark,
+[data-theme="dark"] {
+  /* StudyNook Dark Theme Design Tokens */
+  --background: #0B1220;
+  --foreground: #F8FAFC;
+  --surface: #111A2E;
+  --surface-foreground: #F8FAFC;
+  --surface-secondary: #17233B;
+  --surface-secondary-foreground: #F8FAFC;
+  --surface-tertiary: #1E2D4A;
+  --surface-tertiary-foreground: #F8FAFC;
+  --overlay: #111A2E;
+  --overlay-foreground: #F8FAFC;
+  --muted: #94A3B8;
+  --border: #1E293B;
+  --separator: #1E293B;
+
+  /* HeroUI Primary / Accent Mapping */
+  --accent: #0F766E;
+  --accent-hover: #14B8A6;
+  --accent-foreground: #FFFFFF;
+
+  /* Status Colors */
+  --success: #16A34A;
+  --success-foreground: #FFFFFF;
+  --danger: #DC2626;
+  --danger-foreground: #FFFFFF;
+  --warning: #F59E0B;
+  --warning-foreground: #FFFFFF;
+
+  /* Focus & Links */
+  --focus: #14B8A6;
+  --link: #14B8A6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
