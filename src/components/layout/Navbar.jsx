@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useAuth } from "@/context/AuthContext";
 import PublicNav from "./PublicNav";
 import PrivateNav from "./PrivateNav";
@@ -10,7 +10,32 @@ import ProfileMenu from "./ProfileMenu";
 import ThemeToggle from "./ThemeToggle";
 import { HiOutlineBookOpen, HiBars3, HiXMark } from "react-icons/hi2";
 
-export default function Navbar() {
+function NavbarSkeleton() {
+  return (
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-surface/90 backdrop-blur-md">
+      <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-2.5 select-none">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
+            <HiOutlineBookOpen className="h-5 w-5" />
+          </div>
+          <span className="font-heading text-xl font-bold tracking-tight text-foreground">
+            Study<span className="text-primary">Nook</span>
+          </span>
+        </div>
+        <div className="hidden md:flex items-center gap-6">
+          <div className="h-4 w-16 rounded bg-muted/20 animate-pulse" />
+          <div className="h-4 w-16 rounded bg-muted/20 animate-pulse" />
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="h-9 w-9 rounded-xl border border-border bg-surface/50" />
+          <div className="h-9 w-24 rounded-xl bg-muted/20 animate-pulse" />
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function NavbarContent() {
   const { user, isLoading, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -210,5 +235,13 @@ export default function Navbar() {
         </div>
       )}
     </header>
+  );
+}
+
+export default function Navbar() {
+  return (
+    <Suspense fallback={<NavbarSkeleton />}>
+      <NavbarContent />
+    </Suspense>
   );
 }

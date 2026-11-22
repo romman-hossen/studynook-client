@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import Providers from "@/providers/Providers";
 import Navbar from "@/components/layout/Navbar";
@@ -36,7 +37,9 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-screen flex flex-col bg-background text-foreground antialiased font-sans">
         <Providers>
-          <Navbar />
+          <Suspense fallback={<div className="h-16 w-full border-b border-border bg-surface/90" />}>
+            <Navbar />
+          </Suspense>
           <main className="flex-1 flex flex-col">{children}</main>
           <Footer />
         </Providers>
