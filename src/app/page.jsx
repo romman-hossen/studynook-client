@@ -1,21 +1,21 @@
-import SectionHeading from "@/components/common/SectionHeading";
-import RoomGrid from "@/components/rooms/RoomGrid";
-import rooms from "@/data/rooms";
+import Hero from "@/components/home/Hero";
+import LatestRooms from "@/components/home/LatestRooms";
+import HowItWorks from "@/components/home/HowItWorks";
+import WhyStudyNook from "@/components/home/WhyStudyNook";
 
 export const metadata = {
   title: "StudyNook – Home",
-  description: "StudyNook – Library Study Room Booking Platform",
+  description:
+    "Library Study Room Booking Platform. Find and reserve quiet study rooms, private research pods, and collaborative team suites.",
 };
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
-      <SectionHeading
-        badge="Available Spaces"
-        title="Featured Study Rooms"
-        subtitle="Explore our quiet reading sanctuaries, group collaboration spaces, and presentation hubs."
-      />
-      <RoomGrid rooms={rooms} />
+    <div className="flex flex-col">
+      <Hero />
+      <LatestRooms />
+      <HowItWorks />
+      <WhyStudyNook />
     </div>
   );
 }
