@@ -24,11 +24,17 @@ You are a senior frontend engineer. We are building ONLY the frontend of "StudyN
 - NO alert(), confirm(), prompt(). Use react-hot-toast for messages and HeroUI Modal for confirmations.
 - NO git commands. I will commit myself.
 - Do not add features I did not ask for.
-
-## Auth (MOCK ONLY)
-- AuthContext in /src/context/AuthContext.jsx with user = { name, email, photoURL } | null, login(), register(), logout(), isLoading. Persist the user in localStorage.
-- On reload the app must restore the user without redirecting to /login. Use isLoading and decide only after it becomes false.
-- Private pages: Add Room, My Listings, My Bookings. Guard them in (private)/layout.jsx.
+## Auth (MOCK ONLY, backend-ready)
+- The real auth (JWT in HTTP-only cookie, Google OAuth, MongoDB) will be added by me later. Do NOT implement Better Auth, NextAuth, Firebase, JWT, cookies, API routes or any real auth.
+- AuthContext in /src/context/AuthContext.jsx is the ONLY place that knows how auth works. UI components must only use `useAuth()`:
+  - user: { name, email, photoURL } | null
+  - isLoading: true ONLY during the initial session restore on first mount. Never set it to true inside login/register/logout.
+  - login(email, password) -> returns { success: true, user } or { success: false, error: "message" }
+  - register({ name, email, photoURL, password }) -> returns { success: true } or { success: false, error }. Email/password registration must NOT log the user in.
+  - googleLogin() -> mock: logs in a dummy Google user and returns { success: true, user }
+  - logout()
+- Persist the mock user in localStorage so it survives reload. Keep every mock-only line marked with a comment "// MOCK: replace with API call".
+- Private pages: Add Room, My Listings, My Bookings. Guard them in (private)/layout.jsx using isLoading + user.
 
 ## Design
 - Clean, calm, professional, NOT flashy. Theme: "calm library".
