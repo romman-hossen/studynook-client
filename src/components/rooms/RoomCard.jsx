@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Card, Button } from "@heroui/react";
@@ -32,12 +33,13 @@ export default function RoomCard({ room }) {
       <Card className="h-full flex flex-col border border-border bg-surface rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-shadow">
         {/* Uniform 4:3 Image */}
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted/10">
-          <img
+          <Image
             src={imgSrc}
             alt={room.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             onError={() => setImgSrc(FALLBACK_IMAGE)}
-            className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-            loading="lazy"
+            className="object-cover transition-transform duration-300 hover:scale-105"
           />
           {/* Rate overlay badge */}
           <div className="absolute top-3 right-3 rounded-xl bg-surface/90 backdrop-blur-md px-2.5 py-1 text-xs font-bold text-primary shadow-xs border border-border/60">

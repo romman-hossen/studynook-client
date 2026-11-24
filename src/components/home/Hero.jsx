@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { HiOutlineBookOpen, HiOutlineCheckBadge, HiOutlineStar } from "react-icons/hi2";
 
 export default function Hero() {
@@ -76,12 +77,14 @@ export default function Hero() {
           {/* Right Column (Desktop Only): Hero Room Image */}
           <div className="hidden lg:block lg:col-span-5">
             <div className="relative mx-auto max-w-md xl:max-w-none">
-              <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-lg aspect-[4/3]">
-                <img
+              <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-lg aspect-[4/3] relative">
+                <Image
                   src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1000&q=80"
                   alt="Modern quiet library study sanctuary"
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                  loading="eager"
+                  fill
+                  sizes="(max-width: 1280px) 450px, 500px"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                  priority
                 />
               </div>
 

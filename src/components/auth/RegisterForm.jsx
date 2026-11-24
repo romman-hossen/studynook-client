@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   Form,
@@ -380,12 +381,14 @@ function RegisterFormInner() {
 
       {/* Right Desktop Hero Panel */}
       <div className="relative hidden w-1/2 md:block">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
           alt="Modern Library Team Room"
-          className="h-full w-full object-cover"
+          fill
+          sizes="50vw"
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 text-white">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 text-white z-10">
           <span className="inline-flex items-center rounded-full bg-white/20 backdrop-blur-md px-3 py-1 text-xs font-semibold w-fit mb-3">
             Collaborative Community
           </span>
